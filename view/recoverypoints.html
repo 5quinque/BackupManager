@@ -1,0 +1,42 @@
+{{ include('header.html') }}
+{{ include('sidebar.html') }}
+
+		<div class="col-xs-12 col-sm-10 no-float">
+			Recovery points
+		</div>
+	</div>
+
+
+</div>
+</body>
+
+<script
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"></script>
+
+<script>
+	$("#hide").on('click', function() {
+		if ($("#sidebar").hasClass("col-sm-show")) {
+			$("#sidebar").toggleClass("col-sm-show");
+		}
+
+		if ($("#sidebar").hasClass("col-sm-hide")) {
+			$("#sidebar").toggleClass("col-sm-show");
+		}
+
+		$("#sidebar").toggleClass("col-sm-2");
+		$("#sidebar").toggleClass("col-sm-hide");
+
+		if ($(".sidebar-text").hasClass("hidden")) {
+			setTimeout(function(){ $(".sidebar-text").toggleClass("hidden"); }, 600);
+		} else {
+			$(".sidebar-text").toggleClass("hidden");
+		}
+
+		$("#hide").toggleClass("chevron-spin");
+	});
+</script>
+
+</html>
+

@@ -1,0 +1,84 @@
+{{ include('header.html') }}
+{{ include('sidebar.html') }}
+
+		<div class="col-xs-12 col-sm-10 no-float">
+
+			{% for server in stuff %}
+				<div class="page-header">
+					<h1>{{ server.name }}</h1>
+				</div>
+				<div class="well">
+					Status: {% if server.state == 'OK' %}
+							<span style="color: green">
+						{% else %}
+							<span style="color: red">
+						{% endif %} 
+					{{ server.state }}</span> <br>
+					Backup Quota: 4.3GB / 25GB <br>
+					Backup Frequency: {{ server.replicationScheduleFrequencyType }} <br>
+					Next Backup: {{ server.nextReplicationRunTime }} <br>
+					Last Backup: {{ server.lastReplicationRunTime }} <br>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
+
+</div>
+</body>
+
+<script
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"></script>
+
+<!--
+<script>
+
+	function setCookie(key, value) {
+		var expires = new Date();
+		expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+		document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+	}
+
+	function getCookie(key) {
+		var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+		return keyValue ? keyValue[2] : null;
+	}
+
+
+	$("#hide").on('click', function() {
+		if ($("#sidebar").hasClass("col-sm-show")) {
+			$("#sidebar").toggleClass("col-sm-show");
+		}
+
+		if ($("#sidebar").hasClass("col-sm-hide")) {
+			$("#sidebar").toggleClass("col-sm-show");
+		}
+
+		$("#sidebar").toggleClass("col-sm-2");
+		$("#sidebar").toggleClass("col-sm-hide");
+
+		if ($(".sidebar-text").hasClass("hidden")) {
+			setTimeout(function(){ $(".sidebar-text").toggleClass("hidden"); }, 600);
+		} else {
+			$(".sidebar-text").toggleClass("hidden");
+		}
+
+
+		if (getCookie("smallSidebar") == 0) {
+			console.log("Setting to 1");
+			setCookie("smallSidebar", 1);
+		} else {
+			console.log("Setting to 0");
+			setCookie("smallSidebar", 0);
+		}
+		console.log(getCookie("smallSidebar"));
+
+		//$("#hide").toggleClass("chevron-spin");
+	});
+</script>-->
+
+</html>
+

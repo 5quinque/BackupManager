@@ -1,0 +1,153 @@
+	<style>
+	.sidebar-offcanvas {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+
+html,body,.container-fluid {
+	height:100%;
+	min-height:100%;
+}
+
+.sublist {
+	background-color: #3b4754;
+}
+
+.row {
+	height: 100%;
+	display: flex;
+}
+.col-sm-3.no-float, .col-sm-9.no-float {
+	float: none;
+}
+.col-sm-3 {
+	display: table-cell;
+}
+.col-sm-9 {
+	display: table-cell;
+}
+
+#sidebar {
+	background-color: #4e5d6c;
+}
+
+
+.outer {
+	display: table;
+	position: absolute;
+	height: 100%;
+	z-index: 1;
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.inner {
+	margin-left: auto;
+	margin-right: auto; 
+}
+#hide:hover {
+	cursor: pointer; 
+}
+
+.col-sm-hide {
+	animation: slidein linear 0.6s;
+	animation-iteration-count: 1;
+	animation-fill-mode:forwards;
+}
+
+.col-sm-show {
+	animation: slideout linear 0.6s;
+	animation-iteration-count: 1;
+	animation-fill-mode:forwards;
+}
+
+
+.chevron-spin {
+	transform:  rotate(180deg) ;
+}
+
+@keyframes slidein{
+	0% {
+		width: 16.6667%;
+	}
+	100% {
+		width: 45px;
+	}
+}
+
+@keyframes slideout{
+	0% {
+		width: 45px;
+	}
+	100% {
+		width: 16.6667%;
+	}
+}
+
+.sidebar-text {
+	padding-left: 8px;
+}
+
+
+</style>
+
+
+<div class="row row-offcanvas row-offcanvas-left">
+	<div id="sidebar" class="col-xs-6 col-sm-2 sidebar-offcanvas no-float">
+	
+		<div class="list-group">
+			<a href="/dashboard" class="list-group-item {% if page == 'dashboard' %} active {% endif %}">
+				<span class="glyphicon glyphicon-th" aria-hidden="true"></span> <span class="sidebar-text">Dashboard</span>
+			</a>
+			
+			<a href="/recoverypoints" class="list-group-item {% if page == 'recoverypoints' %} active {% endif %}">
+				<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <span class="sidebar-text">Recovery Points</span>
+			</a>
+
+			<a href="/servers" class="list-group-item {% if page == 'servers' %} active {% endif %}">
+				<span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> <span class="sidebar-text">Servers</span>
+			</a>
+			
+			<a href="/taskhistory" class="list-group-item {% if page == 'taskhistory' %} active {% endif %}">
+				<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <span class="sidebar-text">Task History</span>
+			</a>
+
+			<a href="/admin" class="list-group-item {% if page == 'admin' %} active {% endif %}">
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="sidebar-text">Admin</span>
+			</a>
+
+			{% if 'admin' in page %}
+
+			<a href="/admin/addserver" class="list-group-item sublist {% if page == 'admin_addserver' %} active {% endif %}">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span class="sidebar-text">Add Server</span>
+			</a>
+			<a href="/admin/adduser" class="list-group-item sublist {% if page == 'admin_adduser' %} active {% endif %}">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span class="sidebar-text">Add User</span>
+			</a>
+			<a href="/admin/addnode" class="list-group-item sublist {% if page == 'admin_addnode' %} active {% endif %}">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span class="sidebar-text">Add Node</span>
+			</a>
+
+			{% endif %}
+
+			<span class="list-group-item"></span>
+
+			<a href="/logout" class="list-group-item">
+				<span class="glyphicon glyphicon-off" aria-hidden="true"></span> <span class="sidebar-text">Log out</span>
+			</a>
+		</div>
+
+	</div>
+<!--
+<div class="outer">
+<div class="middle">
+	<div class="inner" id="hide">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	</div>
+</div>
+</div>
+-->
+

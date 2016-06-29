@@ -1,0 +1,82 @@
+{{ include('header.html') }}
+{{ include('sidebar.html') }}
+
+		<div class="col-xs-12 col-sm-10 no-float">
+			<div class="page-header col-sm-12"><h1>Add server</h1></div>
+
+<div class="col-sm-offset-3 col-sm-6">
+<form class="form">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Hostname / IP</label>
+      <input type="email" class="form-control" id="inputEmail3" placeholder="hostname">
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Username</label>
+      <input type="text" class="form-control" id="inputPassword3" placeholder="root/administrator">
+  </div>
+
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+  </div>
+  <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="checked"> Deploy Agent Software
+        </label>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Reboot after deployment
+        </label>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Node</label>
+<select class="form-control">
+  <option>Auto (Recommended)</option>
+  <option>94.136.44.109</option>
+  <option>94.136.44.64</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+  </div>
+
+  <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="checked"> Compress Backups
+        </label>
+      </div>
+  </div>
+	<!-- https://cdnjs.com/libraries/bootstrap-slider -->
+
+
+  <div class="form-group">
+      <button type="submit" class="btn btn-default">Add Server</button>
+  </div>
+</form>
+</div>
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+</div>
+</body>
+
+<script
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"></script>
+</html>
+
