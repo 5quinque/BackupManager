@@ -15,9 +15,9 @@ class r1soft extends Model {
 
 		if (!$this->keyExists()) {
 			$encryption_key = openssl_random_pseudo_bytes(256);
-			file_put_contents(dirname(__DIR__)."/enckey", $encryption_key);
+			file_put_contents(dirname(dirname(__DIR__))."/enckey", $encryption_key);
 		}
-		$this->encryption_key = file_get_contents(dirname(__DIR__)."/enckey");
+		$this->encryption_key = file_get_contents(dirname(dirname(__DIR__))."/enckey");
 	}
 
 	/*
@@ -57,13 +57,18 @@ class r1soft extends Model {
 	}
 
 	public function enableProductFeatures($node) {
+		$context = stream_context_create(array(
+			'ssl' => array('verify_peer' => false, 'verify_peer_name'=>false, 'allow_self_signed' => true)
+		));
+
 		try {
 			$configClient = new soapclient("https://{$node["host"]}:{$node["port"]}/Configuration?wsdl",
 				array('login'	=> $node["user"],
 				'password'	=> $node["pass"],
 				'trace'		=> 1,
 				'cache_wsdl'	=> WSDL_CACHE_NONE,
-				'features'	=> SOAP_SINGLE_ELEMENT_ARRAYS
+				'features'	=> SOAP_SINGLE_ELEMENT_ARRAYS,
+				'stream_context' => $context
 				)
 			);
 			
@@ -76,6 +81,11 @@ class r1soft extends Model {
 
 	public function getPolicyStatus($node) {
 		$policies = array();
+		
+		$context = stream_context_create(array(
+			'ssl' => array('verify_peer' => false, 'verify_peer_name'=>false, 'allow_self_signed' => true)
+		));
+
 
 		try {
 			$policyClient = new soapclient("https://{$node["host"]}:{$node["port"]}/Policy2?wsdl",
@@ -83,7 +93,8 @@ class r1soft extends Model {
 				'password'	=> $node["pass"],
 				'trace'		=> 1,
 				'cache_wsdl'	=> WSDL_CACHE_NONE,
-				'features'	=> SOAP_SINGLE_ELEMENT_ARRAYS
+				'features'	=> SOAP_SINGLE_ELEMENT_ARRAYS,
+				'stream_context' => $context
 				)
 			);
 
@@ -106,7 +117,7 @@ class r1soft extends Model {
 	}
 
 	function keyExists() {
-		return file_exists(dirname(__DIR__)."/enckey");
+		return file_exists(dirname(dirname(__DIR__))."/enckey");
 	}
 
 	private function encryptPassword($data) {
